@@ -44,6 +44,10 @@ for i in range(n):
     k+=m
 print(lista_tablero)
 
+for i in range(len(lista_tablero)):
+    for j in lista_tablero[i]:
+        print(j, end="")
+    print("")
 
 
 
