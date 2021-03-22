@@ -37,10 +37,11 @@ lista_tablero=[]
 for i in range(n):
     lista_tablero.append([])
 print(lista_tablero)
-
+k=0
 for i in range(n):
     for j in range(m):
-        lista_tablero[i].append(lista_cartas[j])
+        lista_tablero[i].append(lista_cartas[j+k])
+    k+=m
 print(lista_tablero)
 
 
