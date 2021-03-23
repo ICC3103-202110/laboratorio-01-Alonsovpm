@@ -9,6 +9,25 @@ def generador_cartas(numero_cartas):
     random.shuffle(lista_cartas)
     return lista_cartas
 
+
+def imprimir_tablero(lista_coord_tablero,lista_censurada_tablero):
+    for i in range(len(lista_coord_tablero)):
+        for j in range(len(lista_coord_tablero[i])):
+            print(" _____ ", end="")
+        print("")
+        for j in lista_coord_tablero[i]:
+            print("|     |", end="")
+        print("")
+        for j in range(len(lista_coord_tablero[i])):
+            print("|  "+str(lista_censurada_tablero[i][j])+"  |", end="")
+        print("")
+        for j in lista_coord_tablero[i]:
+            print("|_____|", end="")
+        print("")
+        for j in range(len(lista_coord_tablero[i])):
+            print(lista_coord_tablero[i][j], end=" ")
+        print("")
+
 numero_cartas = int(input("Con cuantas cartas desea jugar: "))
 
 lista_cartas = generador_cartas(numero_cartas)
@@ -73,30 +92,16 @@ for i in range(n):
 
 print(lista_censurada_tablero)
 
-#imprimir tablero
-for i in range(len(lista_coord_tablero)):
-    for j in range(len(lista_coord_tablero[i])):
-        print(" _____ ", end="")
-    print("")
-    for j in lista_coord_tablero[i]:
-        print("|     |", end="")
-    print("")
-    for j in range(len(lista_coord_tablero[i])):
-        print("|  "+str(lista_censurada_tablero[i][j])+"  |", end="")
-    print("")
-    for j in lista_coord_tablero[i]:
-        print("|_____|", end="")
-    print("")
-    for j in range(len(lista_coord_tablero[i])):
-        print(lista_coord_tablero[i][j], end=" ")
-    print("")
+imprimir_tablero(lista_coord_tablero,lista_censurada_tablero)
 
-#dar_vuelta = input("Escriba las coordenadas de la carta que desea dar vuelta(ej:0,1): ")
-#coord = dar_vuelta.split(",")
-#for i in range(len(coord)):
-#    coord[i]= int(coord[i])
-#coord= tuple(coord)
-#print(coord)
+dar_vuelta = input("Escriba las coordenadas de la carta que desea dar vuelta(ej:0,1): ")
+coord = dar_vuelta.split(",")
+for i in range(len(coord)):
+    coord[i]= int(coord[i])
+
+print(lista_tablero[coord[0]][coord[1]])
+
+
 
 
 
