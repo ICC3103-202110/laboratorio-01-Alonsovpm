@@ -28,6 +28,15 @@ def imprimir_tablero(lista1,lista2):
             print(lista1[i][j], end=" ")
         print("")
 
+def dar_vuelta(lista_censurada_tablero,lista_tablero):
+    dar_vuelta = input("Escriba las coordenadas de la carta que desea dar vuelta(ej:0,1): ")
+    coord = dar_vuelta.split(",")
+    for i in range(len(coord)):
+        coord[i]= int(coord[i])
+    lista_censurada_tablero[coord[0]][coord[1]] = lista_tablero[coord[0]][coord[1]]
+
+    imprimir_tablero(lista_coord_tablero,lista_censurada_tablero)
+
 numero_cartas = int(input("Con cuantas cartas desea jugar: "))
 
 lista_cartas = generador_cartas(numero_cartas)
@@ -94,12 +103,9 @@ print(lista_censurada_tablero)
 
 imprimir_tablero(lista_coord_tablero,lista_censurada_tablero)
 
-dar_vuelta = input("Escriba las coordenadas de la carta que desea dar vuelta(ej:0,1): ")
-coord = dar_vuelta.split(",")
-for i in range(len(coord)):
-    coord[i]= int(coord[i])
+dar_vuelta(lista_censurada_tablero,lista_tablero)
 
-print(lista_tablero[coord[0]][coord[1]])
+
 
 
 
