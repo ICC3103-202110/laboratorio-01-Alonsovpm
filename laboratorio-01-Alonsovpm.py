@@ -44,8 +44,23 @@ for i in range(n):
 #imprimir tablero
 for i in range(len(lista_tablero)):
     for j in lista_tablero[i]:
-        print(j, end=" ")
+        print("*", end=" ")
     print("")
 
+lista_coord=[]
+for x in range(n):
+    for y in range(m):
+        lista_coord.append((x,y))
+
+lista_coord_tablero=[]
+for i in range(n):
+    lista_coord_tablero.append([])
+k=0
+for i in range(n):
+    for j in range(m):
+        lista_coord_tablero[i].append(lista_coord[j+k])
+    k+=m
+
+print(lista_coord_tablero)
 
 
