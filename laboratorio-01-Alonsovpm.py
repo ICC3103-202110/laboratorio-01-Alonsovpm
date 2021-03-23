@@ -55,8 +55,6 @@ for i in range(n):
         lista_coord_tablero[i].append(lista_coord[j+k])
     k+=m
 
-print(lista_coord_tablero)
-
 #imprimir tablero
 for i in range(len(lista_coord_tablero)):
     for j in lista_coord_tablero[i]:
@@ -66,7 +64,7 @@ for i in range(len(lista_coord_tablero)):
         print("|     |", end="")
     print("")
     for j in lista_coord_tablero[i]:
-        print("|  *  |", end="")
+        print("|  ?  |", end="")
     print("")
     for j in lista_coord_tablero[i]:
         print("|_____|", end="")
@@ -75,3 +73,9 @@ for i in range(len(lista_coord_tablero)):
         print(j, end=" ")
     print("")
 
+dar_vuelta = input("Escriba las coordenadas de la carta que desea dar vuelta: ")
+coord = dar_vuelta.split(",")
+for i in range(len(coord)):
+    coord[i]= int(coord[i])
+coord= tuple(coord)
+print(coord)
