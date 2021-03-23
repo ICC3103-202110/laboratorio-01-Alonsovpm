@@ -10,22 +10,22 @@ def generador_cartas(numero_cartas):
     return lista_cartas
 
 
-def imprimir_tablero(lista_coord_tablero,lista_censurada_tablero):
-    for i in range(len(lista_coord_tablero)):
-        for j in range(len(lista_coord_tablero[i])):
+def imprimir_tablero(lista1,lista2):
+    for i in range(len(lista1)):
+        for j in range(len(lista1[i])):
             print(" _____ ", end="")
         print("")
-        for j in lista_coord_tablero[i]:
+        for j in lista1[i]:
             print("|     |", end="")
         print("")
-        for j in range(len(lista_coord_tablero[i])):
-            print("|  "+str(lista_censurada_tablero[i][j])+"  |", end="")
+        for j in range(len(lista1[i])):
+            print("|  "+str(lista2[i][j])+"  |", end="")
         print("")
-        for j in lista_coord_tablero[i]:
+        for j in lista1[i]:
             print("|_____|", end="")
         print("")
-        for j in range(len(lista_coord_tablero[i])):
-            print(lista_coord_tablero[i][j], end=" ")
+        for j in range(len(lista1[i])):
+            print(lista1[i][j], end=" ")
         print("")
 
 numero_cartas = int(input("Con cuantas cartas desea jugar: "))
