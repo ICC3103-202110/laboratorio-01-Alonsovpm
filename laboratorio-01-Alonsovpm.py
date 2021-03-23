@@ -34,8 +34,17 @@ def dar_vuelta(lista_censurada_tablero,lista_tablero):
     for i in range(len(coord)):
         coord[i]= int(coord[i])
     lista_censurada_tablero[coord[0]][coord[1]] = lista_tablero[coord[0]][coord[1]]
-
     imprimir_tablero(lista_coord_tablero,lista_censurada_tablero)
+    dar_vuelta = input("Escriba las coordenadas de la carta que desea dar vuelta(ej:0,1): ")
+    coord2 = dar_vuelta.split(",")
+    for i in range(len(coord2)):
+        coord2[i]= int(coord2[i])
+    lista_censurada_tablero[coord2[0]][coord2[1]] = lista_tablero[coord2[0]][coord2[1]]
+    imprimir_tablero(lista_coord_tablero,lista_censurada_tablero)
+    if lista_tablero[coord2[0]][coord2[1]] == lista_tablero[coord[0]][coord[1]]:
+        print("son iguales!")
+    else:
+        print("no son iguales intentalo denuevo")
 
 numero_cartas = int(input("Con cuantas cartas desea jugar: "))
 
@@ -100,6 +109,7 @@ for i in range(n):
     k+=m
 
 print(lista_censurada_tablero)
+
 
 imprimir_tablero(lista_coord_tablero,lista_censurada_tablero)
 
