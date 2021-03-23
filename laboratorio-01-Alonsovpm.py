@@ -40,13 +40,7 @@ for i in range(n):
         lista_tablero[i].append(lista_cartas[j+k])
     k+=m
 
-
-#imprimir tablero
-for i in range(len(lista_tablero)):
-    for j in lista_tablero[i]:
-        print("*", end=" ")
-    print("")
-
+#tablero coord
 lista_coord=[]
 for x in range(n):
     for y in range(m):
@@ -63,4 +57,21 @@ for i in range(n):
 
 print(lista_coord_tablero)
 
+#imprimir tablero
+for i in range(len(lista_coord_tablero)):
+    for j in lista_coord_tablero[i]:
+        print(" _____ ", end="")
+    print("")
+    for j in lista_coord_tablero[i]:
+        print("|     |", end="")
+    print("")
+    for j in lista_coord_tablero[i]:
+        print("|  *  |", end="")
+    print("")
+    for j in lista_coord_tablero[i]:
+        print("|_____|", end="")
+    print("")
+    for j in lista_coord_tablero[i]:
+        print(j, end=" ")
+    print("")
 
