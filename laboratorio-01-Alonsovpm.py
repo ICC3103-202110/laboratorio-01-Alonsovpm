@@ -46,13 +46,10 @@ def dar_vuelta(lista_censurada_tablero,lista_tablero):
     imprimir_tablero(lista_coord_tablero,lista_censurada_tablero)
     print(lista_censurada_tablero)
     
-    if lista_tablero[coord2[0]][coord2[1]] == lista_tablero[coord[0]][coord[1]]:
+    if lista_tablero[coord2[0]][coord2[1]] == lista_tablero[coord[0]][coord[1]] and coord != coord2:
         print("son iguales!")
-        print(lista_censurada_tablero)
         lista_censurada_tablero[coord[0]][coord[1]] = " "
-        print(lista_censurada_tablero)
         lista_censurada_tablero[coord2[0]][coord2[1]] = " "
-        print(lista_censurada_tablero)
         return lista_censurada_tablero
 
     else:
