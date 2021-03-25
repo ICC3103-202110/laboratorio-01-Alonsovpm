@@ -56,22 +56,21 @@ def dar_vuelta(lista_censurada_tablero,lista_tablero,contador):
         print("son iguales!")
         lista_censurada_tablero[coord[0]][coord[1]] = " "
         lista_censurada_tablero[coord2[0]][coord2[1]] = " "
-        imprimir_tablero(lista_coord_tablero,lista_censurada_tablero,ptje1,ptje2)
-        return lista_censurada_tablero
+        return lista_censurada_tablero, turno
 
     elif coord == coord2:
         print("Introduza coordenadas distintas, intentelo denuevo")
         lista_censurada_tablero[coord[0]][coord[1]] = "?"
         lista_censurada_tablero[coord2[0]][coord2[1]] = "?"
         imprimir_tablero(lista_coord_tablero,lista_censurada_tablero,ptje1,ptje2)
-        return lista_censurada_tablero
+        return lista_censurada_tablero, 0
 
     else:
         print("no son iguales intentalo denuevo")
         lista_censurada_tablero[coord[0]][coord[1]] = "?"
         lista_censurada_tablero[coord2[0]][coord2[1]] = "?"
         imprimir_tablero(lista_coord_tablero,lista_censurada_tablero,ptje1,ptje2)
-        return lista_censurada_tablero
+        return lista_censurada_tablero, 0
         
 
 
@@ -152,11 +151,27 @@ ptje2=0
 contador=1
 
 imprimir_tablero(lista_coord_tablero,lista_censurada_tablero,ptje1,ptje2)
-lista_actualizada = dar_vuelta(lista_censurada_tablero,lista_tablero,contador)
+funciondarvuelta = dar_vuelta(lista_censurada_tablero,lista_tablero,contador)
+
+lista_actualizada = funciondarvuelta[0]
+puntaje = funciondarvuelta[1]
+if puntaje == 1:
+    ptje1+=1
+if puntaje == 2:
+    ptje2+=1
+imprimir_tablero(lista_coord_tablero,lista_censurada_tablero,ptje1,ptje2)
 
 while lista_actualizada != lista_final:
     contador+=1
-    lista_actualizada = dar_vuelta(lista_actualizada,lista_tablero,contador)
+    funciondarvuelta = dar_vuelta(lista_censurada_tablero,lista_tablero,contador)
+
+    lista_actualizada = funciondarvuelta[0]
+    puntaje = funciondarvuelta[1]
+    if puntaje == 1:
+        ptje1+=1
+    if puntaje == 2:
+        ptje2+=1
+    imprimir_tablero(lista_coord_tablero,lista_censurada_tablero,ptje1,ptje2)
 
 print("El juego termino!")
 
