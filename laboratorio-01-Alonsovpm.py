@@ -51,6 +51,13 @@ def dar_vuelta(lista_censurada_tablero,lista_tablero):
         lista_censurada_tablero[coord[0]][coord[1]] = " "
         lista_censurada_tablero[coord2[0]][coord2[1]] = " "
         return lista_censurada_tablero
+        
+    elif coord == coord2:
+        print("Introduza coordenadas distintas, intentelo denuevo")
+        lista_censurada_tablero[coord[0]][coord[1]] = "?"
+        lista_censurada_tablero[coord2[0]][coord2[1]] = "?"
+        imprimir_tablero(lista_coord_tablero,lista_censurada_tablero)
+        return lista_censurada_tablero
 
     else:
         print("no son iguales intentalo denuevo")
