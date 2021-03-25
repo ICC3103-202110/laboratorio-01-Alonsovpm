@@ -28,30 +28,35 @@ def imprimir_tablero(lista1,lista2):
             print(lista1[i][j], end=" ")
         print("")
 
-def dar_vuelta(lista_censurada_tablero,lista_tablero):
-    darvuelta = input("Escriba las coordenadas de la carta que desea dar vuelta(ej:0,1): ")
-    coord = darvuelta.split(",")
+def dar_vuelta(lista_censurada_tablero,lista_tablero,contador):   
+    turno=0
+    if contador%2==0:
+        turno = 2
+    elif contador%2!=0:
+        turno = 1
 
+    darvuelta = input("Jugador "+str(turno)+" Escriba las coordenadas de la carta que desea dar vuelta(ej:0,1): ")
+    coord = darvuelta.split(",")
     for i in range(len(coord)):
         coord[i]= int(coord[i])
     lista_censurada_tablero[coord[0]][coord[1]] = lista_tablero[coord[0]][coord[1]]
     imprimir_tablero(lista_coord_tablero,lista_censurada_tablero)
 
-    darvuelta = input("Escriba las coordenadas de la carta que desea dar vuelta(ej:0,1): ")
+    darvuelta = input("Jugador "+str(turno)+" Escriba las coordenadas de la carta que desea dar vuelta(ej:0,1): ")
     coord2 = darvuelta.split(",")
 
     for i in range(len(coord2)):
         coord2[i]= int(coord2[i])
     lista_censurada_tablero[coord2[0]][coord2[1]] = lista_tablero[coord2[0]][coord2[1]]
     imprimir_tablero(lista_coord_tablero,lista_censurada_tablero)
-    print(lista_censurada_tablero)
+    
     
     if lista_tablero[coord2[0]][coord2[1]] == lista_tablero[coord[0]][coord[1]] and coord != coord2:
         print("son iguales!")
         lista_censurada_tablero[coord[0]][coord[1]] = " "
         lista_censurada_tablero[coord2[0]][coord2[1]] = " "
         return lista_censurada_tablero
-        
+
     elif coord == coord2:
         print("Introduza coordenadas distintas, intentelo denuevo")
         lista_censurada_tablero[coord[0]][coord[1]] = "?"
@@ -66,6 +71,9 @@ def dar_vuelta(lista_censurada_tablero,lista_tablero):
         imprimir_tablero(lista_coord_tablero,lista_censurada_tablero)
         return lista_censurada_tablero
         
+
+
+
 numero_cartas = int(input("Con cuantas cartas desea jugar: "))
 
 lista_cartas = generador_cartas(numero_cartas)
@@ -138,12 +146,12 @@ for i in range(n):
     for j in range(m):
         lista_final[i].append(" ")
     k+=m
-
-
+contador=1
 imprimir_tablero(lista_coord_tablero,lista_censurada_tablero)
-lista_actualizada = dar_vuelta(lista_censurada_tablero,lista_tablero)
+lista_actualizada = dar_vuelta(lista_censurada_tablero,lista_tablero,contador,)
 while lista_actualizada != lista_final:
-    lista_actualizada = dar_vuelta(lista_actualizada,lista_tablero)
+    contador+=1
+    lista_actualizada = dar_vuelta(lista_actualizada,lista_tablero,contador)
 imprimir_tablero(lista_actualizada,lista_censurada_tablero)
 print("El juego termino!")
 
