@@ -10,7 +10,8 @@ def generador_cartas(numero_cartas):
     return lista_cartas
 
 
-def imprimir_tablero(lista1,lista2):
+def imprimir_tablero(lista1,lista2,ptj1,ptje2):
+    print("PUNTAJE J1: "+str(ptje1)+" PUNTAJE J2: "+str(ptje2))
     for i in range(len(lista1)):
         for j in range(len(lista1[i])):
             print(" _____ ", end="")
@@ -40,7 +41,7 @@ def dar_vuelta(lista_censurada_tablero,lista_tablero,contador):
     for i in range(len(coord)):
         coord[i]= int(coord[i])
     lista_censurada_tablero[coord[0]][coord[1]] = lista_tablero[coord[0]][coord[1]]
-    imprimir_tablero(lista_coord_tablero,lista_censurada_tablero)
+    imprimir_tablero(lista_coord_tablero,lista_censurada_tablero,ptje1,ptje2)
 
     darvuelta = input("Jugador "+str(turno)+" Escriba las coordenadas de la carta que desea dar vuelta(ej:0,1): ")
     coord2 = darvuelta.split(",")
@@ -48,27 +49,28 @@ def dar_vuelta(lista_censurada_tablero,lista_tablero,contador):
     for i in range(len(coord2)):
         coord2[i]= int(coord2[i])
     lista_censurada_tablero[coord2[0]][coord2[1]] = lista_tablero[coord2[0]][coord2[1]]
-    imprimir_tablero(lista_coord_tablero,lista_censurada_tablero)
+    imprimir_tablero(lista_coord_tablero,lista_censurada_tablero,ptje1,ptje2)
     
     
     if lista_tablero[coord2[0]][coord2[1]] == lista_tablero[coord[0]][coord[1]] and coord != coord2:
         print("son iguales!")
         lista_censurada_tablero[coord[0]][coord[1]] = " "
         lista_censurada_tablero[coord2[0]][coord2[1]] = " "
+        imprimir_tablero(lista_coord_tablero,lista_censurada_tablero,ptje1,ptje2)
         return lista_censurada_tablero
 
     elif coord == coord2:
         print("Introduza coordenadas distintas, intentelo denuevo")
         lista_censurada_tablero[coord[0]][coord[1]] = "?"
         lista_censurada_tablero[coord2[0]][coord2[1]] = "?"
-        imprimir_tablero(lista_coord_tablero,lista_censurada_tablero)
+        imprimir_tablero(lista_coord_tablero,lista_censurada_tablero,ptje1,ptje2)
         return lista_censurada_tablero
 
     else:
         print("no son iguales intentalo denuevo")
         lista_censurada_tablero[coord[0]][coord[1]] = "?"
         lista_censurada_tablero[coord2[0]][coord2[1]] = "?"
-        imprimir_tablero(lista_coord_tablero,lista_censurada_tablero)
+        imprimir_tablero(lista_coord_tablero,lista_censurada_tablero,ptje1,ptje2)
         return lista_censurada_tablero
         
 
@@ -136,8 +138,6 @@ for i in range(n):
         lista_censurada_tablero[i].append("?")
     k+=m
 
-print(lista_censurada_tablero)
-
 lista_final=[]
 for i in range(n):
     lista_final.append([])
@@ -146,13 +146,18 @@ for i in range(n):
     for j in range(m):
         lista_final[i].append(" ")
     k+=m
+
+ptje1=0
+ptje2=0
 contador=1
-imprimir_tablero(lista_coord_tablero,lista_censurada_tablero)
-lista_actualizada = dar_vuelta(lista_censurada_tablero,lista_tablero,contador,)
+
+imprimir_tablero(lista_coord_tablero,lista_censurada_tablero,ptje1,ptje2)
+lista_actualizada = dar_vuelta(lista_censurada_tablero,lista_tablero,contador)
+
 while lista_actualizada != lista_final:
     contador+=1
     lista_actualizada = dar_vuelta(lista_actualizada,lista_tablero,contador)
-imprimir_tablero(lista_actualizada,lista_censurada_tablero)
+
 print("El juego termino!")
 
 
