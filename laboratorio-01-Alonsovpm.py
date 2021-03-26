@@ -163,11 +163,11 @@ while lista_actualizada != lista_final:
     if puntaje == 2:
         ptje2+=1
     imprimir_tablero(lista_coord_tablero,lista_censurada_tablero,ptje1,ptje2)
+if ptje1>ptje2:
+    print("GANA EL JUGADOR 1!")
+if ptje1<ptje2:
+    print("GANA EL JUGADOR 2!")
+if ptje1 == ptje2:
+    print("HAY UN EMPATE!")
 
 print("El juego termino!")
-
-
-
-
-
-
