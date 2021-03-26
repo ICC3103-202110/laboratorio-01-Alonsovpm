@@ -9,7 +9,6 @@ def generador_cartas(numero_cartas):
     random.shuffle(lista_cartas)
     return lista_cartas
 
-
 def imprimir_tablero(lista1,lista2,ptj1,ptje2):
     print("PUNTAJE J1: "+str(ptje1)+" PUNTAJE J2: "+str(ptje2))
     for i in range(len(lista1)):
@@ -62,19 +61,14 @@ def dar_vuelta(lista_censurada_tablero,lista_tablero,contador):
         print("Introduza coordenadas distintas, intentelo denuevo")
         lista_censurada_tablero[coord[0]][coord[1]] = "?"
         lista_censurada_tablero[coord2[0]][coord2[1]] = "?"
-        imprimir_tablero(lista_coord_tablero,lista_censurada_tablero,ptje1,ptje2)
         return lista_censurada_tablero, 0
 
     else:
         print("no son iguales intentalo denuevo")
         lista_censurada_tablero[coord[0]][coord[1]] = "?"
         lista_censurada_tablero[coord2[0]][coord2[1]] = "?"
-        imprimir_tablero(lista_coord_tablero,lista_censurada_tablero,ptje1,ptje2)
         return lista_censurada_tablero, 0
         
-
-
-
 numero_cartas = int(input("Con cuantas cartas desea jugar: "))
 
 lista_cartas = generador_cartas(numero_cartas)
@@ -94,7 +88,6 @@ if len(lista_cartas)%4==0:
 if len(lista_cartas)%5==0:
     n=int(len(lista_cartas)/5)
     m=5
-
 
 lista_tablero=[]
 for i in range(n):
@@ -120,8 +113,6 @@ for i in range(n):
     for j in range(m):
         lista_coord_tablero[i].append(lista_coord[j+k])
     k+=m
-
-print(lista_tablero)
 
 lista_censurada=[]
 for x in range(n):
